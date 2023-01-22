@@ -1,5 +1,5 @@
 # Course-Manager
-#### Video Demo:  <URL HERE>
+#### Video Demo:  https://youtu.be/hUWNjTSB80I
 #### Description
 This is my CS50 project AKA Course Manager.Sometimes it's hard to remember all information and deadlines while you enroll online courses on different platforms. Hence, this web application would be a good course tracker to use.<br>
 
