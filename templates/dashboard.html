@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Dashboard
+{% endblock %}
+
+{% block main %}
+
+    <div class="container">
+        <br>
+        <div class="row">
+            <div class="col"></div>
+            <div class="col" style="text-align: center">
+                <a class="btn btn-secondary col" href="/addCourse">Add New Course</a>
+            </div>
+            <div class="col"></div>
+        </div>
+        <br>
+        <div>
+            {% for info in all_information %}
+                <aside class="row" style="background-color:#ECECEC; border-radius:10px; padding:5px;">
+                    <section class="col-9">
+                        <div class="row">
+                            <div class="col">
+                                <p id="institute">{{ info[0][2] }}</p>
+                            </div>
+                            <div class="col">
+                                <p id="enroll_date">Enrolled from: </p>
+                                <p id="enroll_date">{{ info[0][4] }}</p>
+                            </div>
+                            <div class="col-6"></div>
+                        </div>
+                        <h2 id="course_name">{{ info[0][1] }}</h2>
+                        <p id="course_about">{{ info[0][3] }}</p>
+                    </section>
+                    <div class="col row">
+                        <div class="col-8">
+                            <p id="end_date">End at</p>
+                            <p>{{ info[0][5] }}</p>
+                        </div>
+                        <form method="post">
+                            <input name="course_name" type="hidden" value="{{ info[0][1] }}">
+                            <button name="delete_course" class="delete_course" type="submit">
+                                <image alt="Delete Course" width="13" height="15" src="/static/images/trash.png">
+                                </image>
+                            </button>
+                        </form>
+                        <p>Nearest Deadline:</p>
+                        <p id="nearest_ddl">{{ info[1][0][0] }}: {{ info[1][0][1] }}</p>
+                    </div>
+                </aside>
+                <br><br>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <script>
+        jQuery(document).ready(function(){
+            socket = io.connect('http://127.0.0.1:5000/dashboard');
+            function send_message() {
+                socket.emit('delete_course');
+            }
+        });
+    </script>
+    <script src="../static/addCourse.js"></script>
+{% endblock %}

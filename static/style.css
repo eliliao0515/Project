@@ -1,0 +1,17 @@
+.fit {
+    object-position: top center;
+    width: inherit;
+    height: inherit;
+}
+
+.background {
+    width: 100%;
+    height: 100%;
+}
+
+.comingSoon {
+    width:max-content; 
+    height:max-content; 
+    object-fit: cover;
+    object-position: center; 
+}
